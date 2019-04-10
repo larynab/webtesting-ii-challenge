@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import logo from "./logo.svg";
+import Greeting from './Greeting/Greeting'
 import "./App.css";
 
 class App extends Component {
@@ -16,9 +17,13 @@ class App extends Component {
             Hi world
           </p>
           <button onClick={this.greet}>Ahoy There</button>
-          <button>Departure</button>
+          <button onClick={this.departure}>Departure</button>
+          {/* old div */}
           {/* <div>Who might you be sailor?</div> */}
-          <div>{this.state.greeting}</div>
+          {/* method within component */}
+          {/* <div>{this.state.greeting}</div> */}
+          {/* method imported */}
+          <Greeting msg={this.state.greeting}></Greeting>
         </header>
       </div>
     );
@@ -30,5 +35,9 @@ class App extends Component {
     this.setState({ greeting: "so long wanderer" });
   };
 }
+
+// function Greeting(props) {
+//   return <div>{props.msg}</div>
+// }
 
 export default App;

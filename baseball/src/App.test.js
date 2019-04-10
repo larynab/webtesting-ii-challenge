@@ -32,7 +32,7 @@ describe("<App />", () => {
     //debugging shows how component is being rendered
     // debug();
   });
-  it('greeting the user', () => {
+  it('welcoming greeting to the user', () => {
     //default method of testing and rendering
     const {getByText} = render(<App />)
     //fire event, method, element
@@ -41,5 +41,15 @@ describe("<App />", () => {
     fireEvent.click(button);
     //after even look for new state
     getByText(/ho there wanderer/i); 
+  })
+  it('goodbye greeting to the user', () => {
+    //default method of testing and rendering
+    const {getByText} = render(<App />)
+    //fire event, method, element
+    //define button
+    const button = getByText(/departure/i);
+    fireEvent.click(button);
+    //after even look for new state
+    getByText(/so long wanderer/i); 
   })
 });
