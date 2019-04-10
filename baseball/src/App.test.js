@@ -21,9 +21,15 @@ describe("<App />", () => {
   // });
   it("renders hi world", () => {
     //for each getby there will be a query by
-    const { getByText, queryByText } = render(<App />);
+    const { getByText, queryByText, debug } = render(<App />);
+    //will break test on fail
     // getByText('Hi World');
-    queryByText(/hi world/i);
+    //will not break, will null instead
+    // queryByText(/hi world/i);
+    //add expect and .not(invert method)
+    expect(queryByText(/hi world/i)).not.toBeNull();
     //or (/hi world/i) to find the content, not the exact casing
+    //debugging shows how component is being rendered
+    debug();
   });
 });
