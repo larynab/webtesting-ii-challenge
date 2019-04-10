@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
-import { render } from "react-testing-library";
+import { render, fireEvent } from "react-testing-library";
 import "jest-dom/extend-expect";
 
 describe("<App />", () => {
@@ -30,6 +30,16 @@ describe("<App />", () => {
     expect(queryByText(/hi world/i)).not.toBeNull();
     //or (/hi world/i) to find the content, not the exact casing
     //debugging shows how component is being rendered
-    debug();
+    // debug();
   });
+  it('greeting the user', () => {
+    //default method of testing and rendering
+    const {getByText} = render(<App />)
+    //fire event, method, element
+    //define button
+    const button = getByText(/ahoy there/i);
+    fireEvent.click(button);
+    //after even look for new state
+    getByText(/ho there wanderer/i); 
+  })
 });
